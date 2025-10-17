@@ -8,7 +8,10 @@
 
 **پروژه تعاملی برای نمایش و یادگیری نمودارهای حالت در درس نظریه ماشین‌ها و زبان‌ها**
 
-[مشاهده دمو]([http://diagramstate.freehost.io/](http://diagramstate.freehost.io/)) | [گزارش باگ](https://github.com) | [درخواست ویژگی]([http://diagramstate.freehost.io/](http://diagramstate.freehost.io/))
+## 🌐 لینک‌های مفید
+
+[🔹 مشاهده دمو](http://diagramstate.freehost.io/) | [🐞 گزارش باگ](https://github.com) | [✨ درخواست ویژگی](http://diagramstate.freehost.io/)
+
 
 </div>
 
