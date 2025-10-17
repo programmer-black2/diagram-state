@@ -1,0 +1,208 @@
+.diagram-container {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.98);
+    border-radius: 20px;
+    box-shadow:
+        0 10px 40px rgba(31, 38, 135, 0.25),
+        inset 0 1px 1px rgba(255, 255, 255, 0.6);
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.diagram-container:hover {
+    transform: translateY(-3px);
+    box-shadow:
+        0 15px 50px rgba(31, 38, 135, 0.35),
+        inset 0 1px 1px rgba(255, 255, 255, 0.6);
+}
+
+.diagram-header {
+    padding: 28px;
+    background: #ffffff;
+    /* simple white */
+    color: #111111;
+    /* black text */
+    position: relative;
+    overflow: hidden;
+}
+
+.diagram-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:
+        radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.diagram-header h3 {
+    margin: 0 0 12px 0;
+    font-size: 1.6rem;
+    font-weight: 800;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    position: relative;
+    z-index: 1;
+}
+
+.diagram-header p {
+    margin: 0;
+    font-size: 1.1rem;
+    opacity: 0.98;
+    line-height: 1.7;
+    font-weight: 500;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+    position: relative;
+    z-index: 1;
+}
+
+.diagram-canvas {
+    padding: 35px;
+    background: linear-gradient(135deg, #fafbff 0%, #f0f4ff 100%);
+    min-height: 450px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+.diagram-canvas svg {
+    max-width: 100%;
+    height: auto;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.08));
+    transition: transform 0.3s ease;
+}
+
+.diagram-canvas svg:hover {
+    transform: scale(1.01);
+}
+
+/* Scrollbar for diagram canvas */
+.diagram-canvas::-webkit-scrollbar {
+    height: 10px;
+}
+
+.diagram-canvas::-webkit-scrollbar-track {
+    background: #e8eef7;
+    border-radius: 10px;
+}
+
+.diagram-canvas::-webkit-scrollbar-thumb {
+    background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+    border-radius: 10px;
+    border: 2px solid #e8eef7;
+}
+
+.diagram-canvas::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(90deg, #764ba2 0%, #667eea 100%);
+}
+
+/* ========== RESPONSIVE DESIGN ========== */
+
+/* تبلت‌های بزرگ */
+@media (max-width: 1024px) {
+    .diagram-header {
+        padding: 24px;
+    }
+
+    .diagram-header h3 {
+        font-size: 1.4rem;
+    }
+
+    .diagram-header p {
+        font-size: 1rem;
+    }
+
+    .diagram-canvas {
+        padding: 28px;
+        min-height: 400px;
+    }
+}
+
+/* موبایل‌های بزرگ */
+@media (max-width: 768px) {
+    .diagram-container {
+        border-radius: 15px;
+    }
+
+    .diagram-header {
+        padding: 20px;
+    }
+
+    .diagram-header h3 {
+        font-size: 1.25rem;
+        margin-bottom: 10px;
+    }
+
+    .diagram-header p {
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+
+    .diagram-canvas {
+        padding: 20px;
+        min-height: 350px;
+    }
+}
+
+/* موبایل‌های کوچک */
+@media (max-width: 480px) {
+    .diagram-container {
+        border-radius: 12px;
+    }
+
+    .diagram-header {
+        padding: 16px;
+    }
+
+    .diagram-header h3 {
+        font-size: 1.1rem;
+        margin-bottom: 8px;
+    }
+
+    .diagram-header p {
+        font-size: 0.88rem;
+        line-height: 1.5;
+    }
+
+    .diagram-canvas {
+        padding: 15px;
+        min-height: 300px;
+    }
+
+    .diagram-canvas svg {
+        filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.08));
+    }
+}
+
+/* موبایل‌های بسیار کوچک */
+@media (max-width: 360px) {
+    .diagram-header {
+        padding: 14px;
+    }
+
+    .diagram-header h3 {
+        font-size: 1rem;
+    }
+
+    .diagram-header p {
+        font-size: 0.82rem;
+    }
+
+    .diagram-canvas {
+        padding: 12px;
+        min-height: 280px;
+    }
+}
+
+/* بهبود تجربه لمسی در موبایل */
+@media (hover: none) {
+    .diagram-container:active {
+        transform: translateY(-1px);
+    }
+}

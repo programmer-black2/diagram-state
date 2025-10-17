@@ -1,42 +1,646 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Vazirmatn', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif, 'Tahoma';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  direction: rtl;
+}
+
+.app-container {
+  min-height: 100vh;
+  padding: 15px;
+  position: relative;
+}
+
+/* Header زیبا و جذاب */
+.app-header {
   text-align: center;
+  color: #111111;
+  /* black text */
+  margin-bottom: 25px;
+  padding: 30px 20px;
+  background: #ffffff;
+  /* white background */
+  backdrop-filter: none;
+  border-radius: 20px;
+  box-shadow: none;
+  border: 1px solid #e5e7eb;
+  max-width: 1600px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 25px;
+  animation: fadeInDown 0.6s ease-out;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
+@keyframes fadeInDown {
   from {
-    transform: rotate(0deg);
+    opacity: 0;
+    transform: translateY(-30px);
   }
+
   to {
-    transform: rotate(360deg);
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+.app-header h1 {
+  font-size: 2.4rem;
+  margin-bottom: 12px;
+  text-shadow: none;
+  font-weight: 800;
+  letter-spacing: -0.2px;
+}
+
+.app-header p {
+  font-size: 1.1rem;
+  opacity: 1;
+  font-weight: 500;
+  text-shadow: none;
+}
+
+/* Main Content - Responsive Grid */
+.main-content {
+  display: grid;
+  grid-template-columns: 380px 1fr;
+  gap: 20px;
+  max-width: 1600px;
+  margin: 0 auto;
+  animation: fadeIn 0.8s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
   }
 }
 
-.card {
-  padding: 2em;
+/* Sidebar زیبا */
+.sidebar {
+  background: rgba(255, 255, 255, 0.98);
+  border-radius: 20px;
+  padding: 25px;
+  box-shadow:
+    0 10px 40px rgba(31, 38, 135, 0.25),
+    inset 0 1px 1px rgba(255, 255, 255, 0.6);
+  max-height: calc(100vh - 220px);
+  overflow-y: auto;
+  color: #2c3e50;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  transition: transform 0.3s ease;
 }
 
-.read-the-docs {
-  color: #888;
+.sidebar:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 15px 50px rgba(31, 38, 135, 0.35),
+    inset 0 1px 1px rgba(255, 255, 255, 0.6);
+}
+
+.sidebar h2 {
+  color: #111111;
+  margin: 0 0 20px 0;
+  font-size: 1.6rem;
+  text-align: center;
+  border-bottom: 2px solid #e5e7eb;
+  padding-bottom: 15px;
+  font-weight: 800;
+}
+
+/* Search Box */
+.search-box {
+  margin-bottom: 20px;
+}
+
+.search-box input {
+  width: 100%;
+  padding: 16px 20px;
+  border: 2px solid #e0e7ff;
+  border-radius: 15px;
+  font-size: 1.05rem;
+  transition: all 0.3s ease;
+  font-family: inherit;
+  background: #f8faff;
+  color: #2c3e50;
+  font-weight: 500;
+}
+
+.search-box input::placeholder {
+  color: #94a3b8;
+  font-weight: 400;
+}
+
+.search-box input:focus {
+  outline: none;
+  border-color: #0ea5e9;
+  background: white;
+  box-shadow: 0 0 0 5px rgba(102, 126, 234, 0.15);
+  transform: translateY(-2px);
+}
+
+/* Examples List */
+.examples-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-right: 4px;
+}
+
+.example-button {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  background: #ffffff;
+  cursor: pointer;
+  transition: none;
+  text-align: right;
+  color: #111111;
+  font-weight: 500;
+  position: relative;
+  overflow: visible;
+  box-shadow: none;
+}
+
+.example-button::before {
+  content: none;
+  display: none;
+}
+
+.example-button:hover::before {
+  display: none;
+}
+
+.example-button:hover {
+  border-color: #e5e7eb;
+  background: #ffffff;
+  transform: none;
+  box-shadow: none;
+}
+
+.example-button.active {
+  border-color: #e5e7eb;
+  background: #ffffff;
+  color: #111111;
+  box-shadow: none;
+  transform: none;
+}
+
+.example-button.active::before {
+  display: none;
+}
+
+.example-number {
+  min-width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f5f5f5;
+  color: #111111;
+  border-radius: 50%;
+  font-weight: 700;
+  font-size: 1rem;
+  box-shadow: none;
+  border: 1px solid #e5e7eb;
+  flex-shrink: 0;
+  z-index: 1;
+  position: relative;
+}
+
+.example-button.active .example-number {
+  background: #f5f5f5;
+  color: #111111;
+  border-color: #e5e7eb;
+  box-shadow: none;
+}
+
+.example-title {
+  flex: 1;
+  font-size: 0.98rem;
+  line-height: 1.6;
+  text-align: right;
+  font-weight: 500;
+  z-index: 1;
+  position: relative;
+  display: inline-block;
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+.example-button.active .example-title {
+  font-weight: 700;
+  border-bottom: 2px solid #111111;
+  /* selection indicator */
+}
+
+/* Diagram Area */
+.diagram-area {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Legend */
+.legend {
+  background: rgba(255, 255, 255, 0.98);
+  border-radius: 20px;
+  padding: 28px;
+  box-shadow:
+    0 10px 40px rgba(31, 38, 135, 0.25),
+    inset 0 1px 1px rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.legend h3 {
+  background: linear-gradient(135deg, #0ea5e9 0%, #0369a1 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 0 0 20px 0;
+  font-size: 1.5rem;
+  font-weight: 800;
+  border-bottom: 3px solid #e8eef7;
+  padding-bottom: 12px;
+}
+
+.legend ul {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 18px;
+  padding: 0;
+  margin: 0;
+}
+
+.legend li {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 1.05rem;
+  color: #2c3e50;
+  font-weight: 600;
+  padding: 12px;
+  background: #fafbff;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  border: 1px solid #e8eef7;
+}
+
+.legend li:hover {
+  background: #f0f4ff;
+  transform: translateX(-5px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.15);
+  border-color: #0ea5e9;
+}
+
+.legend-circle {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  display: inline-block;
+  border: 2px solid;
+  flex-shrink: 0;
+}
+
+.legend-circle.blue {
+  background: #e3f2fd;
+  border-color: #1565c0;
+}
+
+.legend-circle.green {
+  background: #c8e6c9;
+  border-color: #2e7d32;
+  border-width: 4px;
+}
+
+.legend-circle.red {
+  background: #ffebee;
+  border-color: #f44336;
+}
+
+.legend-epsilon {
+  font-size: 1.6rem;
+}
+
+.legend-arrow {
+  font-size: 1.6rem;
+  color: #0ea5e9;
+  font-weight: bold;
+}
+
+/* Scrollbar Styling */
+.sidebar::-webkit-scrollbar,
+.diagram-canvas::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+.sidebar::-webkit-scrollbar-track,
+.diagram-canvas::-webkit-scrollbar-track {
+  background: #f8faff;
+  border-radius: 10px;
+  margin: 8px 0;
+}
+
+.sidebar::-webkit-scrollbar-thumb,
+.diagram-canvas::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #0ea5e9 0%, #0369a1 100%);
+  border-radius: 10px;
+  border: 2px solid #f8faff;
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover,
+.diagram-canvas::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #0369a1 0%, #0ea5e9 100%);
+}
+
+/* ========== RESPONSIVE DESIGN ========== */
+
+/* Tablets و صفحات متوسط */
+@media (max-width: 1200px) {
+  .main-content {
+    grid-template-columns: 320px 1fr;
+    gap: 15px;
+  }
+
+  .sidebar {
+    padding: 20px;
+  }
+
+  .app-header h1 {
+    font-size: 2.3rem;
+  }
+}
+
+/* تبلت‌های کوچک */
+@media (max-width: 1024px) {
+  .main-content {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .sidebar {
+    max-height: 400px;
+  }
+
+  .app-header {
+    padding: 25px 15px;
+  }
+
+  .app-header h1 {
+    font-size: 2rem;
+  }
+
+  .app-header p {
+    font-size: 1.1rem;
+  }
+
+  .legend ul {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+}
+
+/* موبایل‌های بزرگ */
+@media (max-width: 768px) {
+  .app-container {
+    padding: 10px;
+  }
+
+  .app-header {
+    padding: 20px 15px;
+    margin-bottom: 20px;
+    border-radius: 15px;
+  }
+
+  .app-header h1 {
+    font-size: 1.6rem;
+    margin-bottom: 8px;
+  }
+
+  .app-header p {
+    font-size: 0.95rem;
+  }
+
+  .sidebar {
+    padding: 18px;
+    max-height: 350px;
+    border-radius: 15px;
+  }
+
+  .sidebar h2 {
+    font-size: 1.3rem;
+  }
+
+  .search-box input {
+    padding: 14px 16px;
+    font-size: 0.95rem;
+  }
+
+  .example-button {
+    padding: 14px;
+    gap: 12px;
+  }
+
+  .example-number {
+    min-width: 38px;
+    height: 38px;
+    font-size: 1rem;
+  }
+
+  .example-title {
+    font-size: 0.88rem;
+  }
+
+  .legend {
+    padding: 20px;
+    border-radius: 15px;
+  }
+
+  .legend h3 {
+    font-size: 1.2rem;
+  }
+
+  .legend ul {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .legend li {
+    font-size: 0.95rem;
+    padding: 10px;
+  }
+
+  .legend-circle {
+    width: 28px;
+    height: 28px;
+  }
+}
+
+/* موبایل‌های کوچک */
+@media (max-width: 480px) {
+  .app-container {
+    padding: 8px;
+  }
+
+  .app-header {
+    padding: 15px 12px;
+    border-radius: 12px;
+  }
+
+  .app-header h1 {
+    font-size: 1.4rem;
+    letter-spacing: -0.3px;
+  }
+
+  .app-header p {
+    font-size: 0.85rem;
+  }
+
+  .main-content {
+    gap: 15px;
+  }
+
+  .sidebar {
+    padding: 15px;
+    max-height: 300px;
+    border-radius: 12px;
+  }
+
+  .sidebar h2 {
+    font-size: 1.15rem;
+    padding-bottom: 10px;
+  }
+
+  .search-box {
+    margin-bottom: 15px;
+  }
+
+  .search-box input {
+    padding: 12px 14px;
+    font-size: 0.9rem;
+    border-radius: 12px;
+  }
+
+  .examples-list {
+    gap: 10px;
+  }
+
+  .example-button {
+    padding: 12px;
+    gap: 10px;
+    border-radius: 12px;
+  }
+
+  .example-button:hover {
+    transform: translateX(-5px);
+  }
+
+  .example-button.active {
+    transform: translateX(-7px) scale(1.01);
+  }
+
+  .example-number {
+    min-width: 34px;
+    height: 34px;
+    font-size: 0.95rem;
+  }
+
+  .example-title {
+    font-size: 0.82rem;
+    line-height: 1.5;
+  }
+
+  .legend {
+    padding: 16px;
+    border-radius: 12px;
+  }
+
+  .legend h3 {
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+  }
+
+  .legend ul {
+    gap: 10px;
+  }
+
+  .legend li {
+    font-size: 0.88rem;
+    padding: 8px;
+    gap: 10px;
+  }
+
+  .legend-circle {
+    width: 26px;
+    height: 26px;
+  }
+
+  .legend-epsilon,
+  .legend-arrow {
+    font-size: 1.3rem;
+  }
+}
+
+/* موبایل‌های بسیار کوچک */
+@media (max-width: 360px) {
+  .app-header h1 {
+    font-size: 1.2rem;
+  }
+
+  .app-header p {
+    font-size: 0.8rem;
+  }
+
+  .sidebar h2 {
+    font-size: 1rem;
+  }
+
+  .example-title {
+    font-size: 0.78rem;
+  }
+
+  .legend li {
+    font-size: 0.82rem;
+  }
+}
+
+/* بهبود رندر متن */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* اطمینان از خوانایی متن */
+body {
+  color: #2c3e50;
+}
+
+/* رفع مشکل overflow در موبایل */
+html {
+  overflow-x: hidden;
+}
+
+/* بهبود تجربه لمسی در موبایل */
+@media (hover: none) {
+  .example-button:active {
+    transform: translateX(-8px) scale(0.98);
+  }
+
+  .legend li:active {
+    transform: translateX(-3px);
+  }
 }
